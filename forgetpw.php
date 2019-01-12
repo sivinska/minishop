@@ -41,7 +41,7 @@ if (!$_SESSION[logged] && $_SERVER["REQUEST_METHOD"] == "POST")
 		if($stmt = mysqli_prepare($connection, $sql))
 		{
 			mysqli_stmt_bind_param($stmt, "s", $param_username);
-			$param_username = $_username;
+			$param_username = $username;
 			if(mysqli_stmt_execute($stmt))
 			{
 				mysqli_stmt_store_result($stmt);
@@ -65,7 +65,7 @@ if (!$_SESSION[logged] && $_SERVER["REQUEST_METHOD"] == "POST")
 							}
 						}
 						else
-							$oldpw_err = "Wrong password.";
+							$secret_err = "Wrong answer.";
 					}
 				}
 				else

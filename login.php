@@ -95,16 +95,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                 <hr>
 				<label>Username</label>
 				<input type="text" name="username" value="">
-			
+
 				<label>Password</label>
 				<input type="password" name="password" value="">
-			
+
 				<br />
 				<button type="submit" class="btn btn-primary">Log in</button>
 				<br />
-				<p>Forgot your password? <a href="modify_pw.php">Click here to modify</a>.</p>
+				<p>Forgot your password? <a href="forgetpw.php">Click here to modify</a>.</p>
 			</div>
-			
+
 		</form>
 	</body>
 </html>
