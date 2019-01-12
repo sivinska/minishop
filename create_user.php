@@ -111,31 +111,31 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		<title>Sign in</title>
 	</head>
 	<body>
-		<form class="" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-			<div class="">
+		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+			<div class="wrapper">
+                <h1>Register</h1>
+                <p>Please fill in this form to create an account.</p>
+                <hr>
 				<label>Username</label>
 				<input type="text" name="username" value="">
-				<span><?php echo $username_err; ?></span>
-			</div>
-			<div class="">
+                <span style='color:red;'><?php echo $username_err; ?></span>
+                
 				<label>Password</label>
 				<input type="password" name="password" value="">
-				<span><?php echo $password_err; ?></span>
-			</div>
-			<div class="">
+                <span style='color:red;'><?php echo $password_err; ?></span>
+                
 				<label>Confirm password</label>
 				<input type="password" name="confirm_password" value="">
-				<span><?php echo $confirm_password_err; ?></span>
-			</div>
-			<div class="">
-				<label>Secret questions: What's your favourite colour?</label>
+				<span style='color:red;'><?php echo $confirm_password_err; ?></span>
+
+                <label>Secret questions: What's your favourite colour?</label>
 				<input type="password" name="secret" value="">
-				<span><?php echo $secret_err; ?></span>
+                <span style='color:red;'><?php echo $secret_err; ?></span>
+                <br />
+
+				<button type="submit" class="btn btn-primary">Register</button>
 			</div>
-			<div>
-				<input type="submit" name="Create" value="create">
-			</div>
-		</form>
+        </form>
 	</body>
 </html>
 

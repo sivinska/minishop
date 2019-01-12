@@ -90,24 +90,25 @@ if ($_SESSION[logged] && $_SERVER["REQUEST_METHOD"] == "POST")
 		<title>Modify password</title>
 	</head>
 	<body>
-		<form class="" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-			<div class="">
+		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+			<div class="wrapper">
+                <h1>Modify your password</h1>
+                <p>Please fill in this form to modify your password.</p>
+                <hr>
 				<label>Old password</label>
 				<input type="password" name="oldpw" value="">
 				<span><?php echo $oldpw_err; ?></span>
-			</div>
-			<div class="">
+			
 				<label>New password</label>
 				<input type="password" name="newpw" value="">
 				<span><?php echo $newpw_err; ?></span>
-			</div>
-			<div class="">
+			
 				<label>Confirm new password</label>
 				<input type="password" name="confirm_newpw" value="">
 				<span><?php echo $confirm_newpw_err; ?></span>
-			</div>
-			<div>
-				<input type="submit" name="Modify" value="Modify">
+
+				<br />
+				<button type="submit" class="btn btn-primary">Modify</button>
 			</div>
 		</form>
 	</body>

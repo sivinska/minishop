@@ -87,19 +87,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 		<title>Sign in</title>
 	</head>
 	<body>
-		<form class="" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-			<p><?php echo $error; ?></p>
-			<div class="">
+		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+			<div class="wrapper">
+				<p><?php echo $error; ?></p>
+				<h1>Log in</h1>
+                <p>Please fill in this form to login.</p>
+                <hr>
 				<label>Username</label>
 				<input type="text" name="username" value="">
-			</div>
-			<div class="">
-				<label>Password <a href="modify_pw.php">Forgot password?</a></label>
+			
+				<label>Password</label>
 				<input type="password" name="password" value="">
+			
+				<br />
+				<button type="submit" class="btn btn-primary">Log in</button>
+				<br />
+				<p>Forgot your password? <a href="modify_pw.php">Click here to modify</a>.</p>
 			</div>
-			<div>
-				<input type="submit" name="Signin" value="Sign in">
-			</div>
+			
 		</form>
 	</body>
 </html>
