@@ -5,14 +5,14 @@ include("header.php");
 include("nav.php");
 
 // Define variables and initialize with empty values
-$username = $password = $confirm_password = "";
-$username_err = $password_err = $confirm_password_err = "";
+$username = $password = $confirm_password = $secret = "";
+$username_err = $password_err = $confirm_password_err =$secret_err = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Validate username
-    if(empty(trim($_POST["username"]))){
+    if(empty(test_input($_POST["username"]))){
         $username_err = "Please enter a username.";
     } else{
         // Prepare a select statement
@@ -23,7 +23,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             mysqli_stmt_bind_param($stmt, "s", $param_username);
 
             // Set parameters
-            $param_username = trim($_POST["username"]);
+            $param_username = test_input($_POST["username"]);
 
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
@@ -33,7 +33,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 if(mysqli_stmt_num_rows($stmt) == 1){
                     $username_err = "This username is already taken.";
                 } else{
-                    $username = trim($_POST["username"]);
+                    $username = test_input($_POST["username"]);
                 }
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
@@ -45,37 +45,44 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     // Validate password
-    if(empty(trim($_POST["password"]))){
+    if(empty(test_input($_POST["password"]))){
         $password_err = "Please enter a password.";
-    } elseif(strlen(trim($_POST["password"])) < 6){
+    } elseif(strlen(test_input($_POST["password"])) < 6){
         $password_err = "Password must have atleast 6 characters.";
     } else{
-        $password = trim($_POST["password"]);
+        $password = test_input($_POST["password"]);
     }
 
     // Validate confirm password
-    if(empty(trim($_POST["confirm_password"]))){
+    if(empty(test_input($_POST["confirm_password"]))){
         $confirm_password_err = "Please confirm password.";
     } else{
-        $confirm_password = trim($_POST["confirm_password"]);
+        $confirm_password = test_input($_POST["confirm_password"]);
         if(empty($password_err) && ($password != $confirm_password)){
             $confirm_password_err = "Password did not match.";
         }
     }
 
-    // Check input errors before inserting in database
+	if(empty(test_input($_POST["secret"]))){
+		$secret_err = "Please enter a secret answer.";
+	} else{
+		$secret = test_input($_POST["secret"]);
+	}
+
+	// Check input errors before inserting in database
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
 
         // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+        $sql = "INSERT INTO users (username, password, secret) VALUES (?, ?, ?)";
 
         if($stmt = mysqli_prepare($connection, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
+            mysqli_stmt_bind_param($stmt, "sss", $param_username, $param_password, $param_secret);
 
             // Set parameters
             $param_username = $username;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
+			$param_secret = password_hash($secret, PASSWORD_DEFAULT);
 
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
@@ -104,7 +111,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		<title>Sign in</title>
 	</head>
 	<body>
-		<form class="" action="create_user.php" method="post">
+		<form class="" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
 			<div class="">
 				<label>Username</label>
 				<input type="text" name="username" value="">
@@ -119,6 +126,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				<label>Confirm password</label>
 				<input type="password" name="confirm_password" value="">
 				<span><?php echo $confirm_password_err; ?></span>
+			</div>
+			<div class="">
+				<label>Secret questions: What's your favourite colour?</label>
+				<input type="password" name="secret" value="">
+				<span><?php echo $secret_err; ?></span>
 			</div>
 			<div>
 				<input type="submit" name="Create" value="create">

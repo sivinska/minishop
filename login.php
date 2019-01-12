@@ -12,23 +12,23 @@ $error_msg = "Incorrect username or password.";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
 	//Username check
-    if(empty(trim($_POST["username"])))
+    if(empty(test_input($_POST["username"])))
 	{
         $error = $error_msg;
     }
 	else
 	{
-        $username = trim($_POST["username"]);
+        $username = test_input($_POST["username"]);
     }
 
     // Password check
-    if(empty(trim($_POST["password"])))
+    if(empty(test_input($_POST["password"])))
 	{
 		$error = $error_msg;
     }
 	else
 	{
-		$password = trim($_POST["password"]);
+		$password = test_input($_POST["password"]);
 	}
 
     // Check input errors before inserting in database
@@ -87,7 +87,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 		<title>Sign in</title>
 	</head>
 	<body>
-		<form class="" action="login.php" method="post">
+		<form class="" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
 			<p><?php echo $error; ?></p>
 			<div class="">
 				<label>Username</label>
@@ -103,3 +103,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 		</form>
 	</body>
 </html>
+
+<?php include('footer.php'); ?>
