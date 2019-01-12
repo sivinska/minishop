@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 12, 2019 at 06:59 AM
+-- Generation Time: Jan 12, 2019 at 02:47 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.1.25
 
@@ -78,7 +78,8 @@ INSERT INTO `products` (`id`, `title`, `price`, `image`, `category`, `code`) VAL
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` text NOT NULL,
-  `password` text NOT NULL
+  `password` text NOT NULL,
+  `secret` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -123,7 +124,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
