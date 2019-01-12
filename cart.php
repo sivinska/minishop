@@ -15,7 +15,7 @@ if(!empty($_SESSION["shopping_cart"])) {
 		}
 		if(empty($_SESSION["shopping_cart"]))
 		unset($_SESSION["shopping_cart"]);
-			}		
+			}
 		}
 }
 
@@ -26,7 +26,7 @@ if (isset($_POST['action']) && $_POST['action']=="change"){
         break; // Stop the loop after we've found the product
     }
 }
-  	
+
 }
 
 
@@ -37,7 +37,7 @@ if (isset($_POST['action']) && $_POST['action']=="change"){
 <?php
 if(isset($_SESSION["shopping_cart"])){
     $total_price = 0;
-?>	
+?>
 <br /><br /><br />
 <table class="table">
 <tr>
@@ -46,8 +46,8 @@ if(isset($_SESSION["shopping_cart"])){
 <th>Quantity</th>
 <th>Unit price</th>
 <th>Total</th>
-</tr>	
-<?php		
+</tr>
+<?php
 foreach ($_SESSION["shopping_cart"] as $product){
 ?>
 <tr>
@@ -68,8 +68,8 @@ foreach ($_SESSION["shopping_cart"] as $product){
 </td>
 
 
-<td><?php echo $product["price"]."€"; ?></td>
-<td><?php echo $product["price"]*$product["quantity"]."€"; ?></td>
+<td><?php echo $product["price"]." &#8364"; ?></td>
+<td><?php echo $product["price"]*$product["quantity"]." &#8364"; ?></td>
 
 
 <td>
@@ -88,11 +88,11 @@ $total_price += ($product["price"]*$product["quantity"]);
 ?>
 <tr>
 <td colspan="5" align="right">
-<strong>TOTAL: <?php echo $total_price."€"; ?></strong>
+<strong>TOTAL: <?php echo $total_price." &#8364"; ?></strong>
 </td>
 </tr>
 
-</table>		
+</table>
   <?php
 }else{
 	echo "<h3>Your cart is empty!</h3>";
@@ -105,5 +105,3 @@ $total_price += ($product["price"]*$product["quantity"]);
 <div class="message_box" style="margin:10px 0px;">
 <?php echo $status; ?>
 </div>
-
-

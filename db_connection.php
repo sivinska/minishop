@@ -2,7 +2,7 @@
 
 
 /* Attempt to connect to MySQL database */
-$connection = mysqli_connect("localhost", "root", "keenouxe", "rush");
+$connection = mysqli_connect("localhost", "root", "keenouxe", "rush00");
 echo "i am connected";
 // Check connection
 if($connection === false){

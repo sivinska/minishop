@@ -77,7 +77,7 @@ INSERT INTO `products` (`id`, `title`, `price`, `image`, `category`, `code`) VAL
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `username` text NOT NULL UNIQUE,
+  `username` text NOT NULL,
   `password` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

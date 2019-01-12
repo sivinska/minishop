@@ -30,7 +30,7 @@ if(empty($_SESSION["shopping_cart"])) {
 	$array_keys = array_keys($_SESSION["shopping_cart"]);
 	if(in_array($code,$array_keys)) {
 		$status = "<div style='color:red;'>
-		Product is already added to your cart!</div>";	
+		Product is already added to your cart!</div>";
 	} else {
 	$_SESSION["shopping_cart"] = array_merge($_SESSION["shopping_cart"],$cartArray);
 	$status = "<div>Product is added to your cart!</div>";
@@ -60,13 +60,13 @@ $result = mysqli_query($connection,"SELECT * FROM `products`");
 	<div class="row">
 <?php while($row = mysqli_fetch_assoc($result)){
 		echo "<div class='col-sm-6 col-md-3'>
-				
+
 			  <form method='post' action=''>
 			  <input type='hidden' name='code' value=".$row['code']." />
 			  <div class='thumbnail'><img src='".$row['image']."' />
 			  <div class='caption'>
 					<h3>".$row["title"]."</h3>
-					<h3>".$row["price"]."€</h3>
+					<h3>".$row["price"]." &#8364</h3>
 			  <button type='submit' class='btn btn-primary'>Add to cart</button>
 			  </div>
 			  </form>
