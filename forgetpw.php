@@ -4,16 +4,20 @@ require_once("db_connection.php");
 include("header.php");
 include("nav.php");
 
-$oldpw = $newpw = $confirm_newpw = "";
-$oldpw_err = $newpw_err = $confirm_newpw_err = "";
+$username = $secret = $newpw = $confirm_newpw = "";
+$username_err = $secret_err = $newpw_err = $confirm_newpw_err = "";
 
-if ($_SESSION[logged] && $_SERVER["REQUEST_METHOD"] == "POST")
+if (!$_SESSION[logged] && $_SERVER["REQUEST_METHOD"] == "POST")
 {
-	// Password check
-    if(empty(test_input($_POST["oldpw"])))
-		$oldpw_err = "Please enter your password.";
+    if(empty(test_input($_POST["username"])))
+		$username_err = "Please enter your username.";
 	else
-		$oldpw = test_input($_POST["oldpw"]);
+		$username = test_input($_POST["username"]);
+
+	if(empty(test_input($_POST["secret"])))
+		$secret_err = "Please enter your secret answer.";
+	else
+		$secret = test_input($_POST["secret"]);
 
 	if(empty(test_input($_POST["newpw"])))
 		$newpw_err = "Please enter a password.";
@@ -31,22 +35,22 @@ if ($_SESSION[logged] && $_SERVER["REQUEST_METHOD"] == "POST")
             $confirm_newpw_err = "Password did not match.";
     }
 
-	if (empty($oldpw_err) && empty($newpw_err) && empty($confirm_newpw_err))
+	if (empty($username_err) && empty($secret_err) && empty($newpw_err) && empty($confirm_newpw_err))
 	{
-		$sql = "SELECT id, username, password FROM users WHERE username = ?";
+		$sql = "SELECT id, username, password, secret FROM users WHERE username = ?";
 		if($stmt = mysqli_prepare($connection, $sql))
 		{
 			mysqli_stmt_bind_param($stmt, "s", $param_username);
-			$param_username = $_SESSION["username"];
+			$param_username = $_username;
 			if(mysqli_stmt_execute($stmt))
 			{
 				mysqli_stmt_store_result($stmt);
 				if(mysqli_stmt_num_rows($stmt) == 1)
 				{
-					mysqli_stmt_bind_result($stmt, $id, $username, $hashed_pw);
+					mysqli_stmt_bind_result($stmt, $id, $username, $hashed_pw, $hashed_secret);
 					if (mysqli_stmt_fetch($stmt))
 					{
-						if (password_verify($oldpw, $hashed_pw))
+						if (password_verify($secret, $hashed_secret))
 						{
 							$sql = "UPDATE users SET password = ? WHERE id = ?";
 							if ($stmt = mysqli_prepare($connection, $sql))
@@ -87,14 +91,19 @@ if ($_SESSION[logged] && $_SERVER["REQUEST_METHOD"] == "POST")
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Modify password</title>
+		<title>Password forget</title>
 	</head>
 	<body>
 		<form class="" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
 			<div class="">
-				<label>Old password</label>
-				<input type="password" name="oldpw" value="">
-				<span><?php echo $oldpw_err; ?></span>
+				<label>Username</label>
+				<input type="text" name="username" value="">
+				<span><?php echo $username_err; ?></span>
+			</div>
+			<div class="">
+				<label>Secret questions: What's your favourite colour?</label>
+				<input type="password" name="secret" value="">
+				<span><?php echo $secret_err; ?></span>
 			</div>
 			<div class="">
 				<label>New password</label>
@@ -107,7 +116,7 @@ if ($_SESSION[logged] && $_SERVER["REQUEST_METHOD"] == "POST")
 				<span><?php echo $confirm_newpw_err; ?></span>
 			</div>
 			<div>
-				<input type="submit" name="Modify" value="Modify">
+				<input type="submit" name="Reset" value="Reset">
 			</div>
 		</form>
 	</body>
