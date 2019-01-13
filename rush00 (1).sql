@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 12, 2019 at 02:47 PM
+-- Generation Time: Jan 13, 2019 at 10:34 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.1.25
 
@@ -29,11 +29,23 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `basket` (
+  `id` int(50) NOT NULL,
+  `id_user` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_items`
+--
+
+CREATE TABLE `order_items` (
   `id` int(11) NOT NULL,
-  `login` text NOT NULL,
-  `price` int(11) NOT NULL,
+  `username` text NOT NULL,
+  `id_basket` int(11) NOT NULL,
+  `code` varchar(250) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `total` int(11) NOT NULL
+  `price` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -83,6 +95,13 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `secret`) VALUES
+(4, 'sarune', '$2y$10$mc/XK87/ReLvTErQjg5AM.iA608OZnSnB1MUiSQNYJdWIE0tc7Uwy', '$2y$10$02QDJfU.F9xoAAiXQ4GPHO2q5MS.kAmpFeThgczmiq/vIZqH40O7m');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -90,6 +109,12 @@ CREATE TABLE `users` (
 -- Indexes for table `basket`
 --
 ALTER TABLE `basket`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_items`
+--
+ALTER TABLE `order_items`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -112,7 +137,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `basket`
 --
 ALTER TABLE `basket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+
+--
+-- AUTO_INCREMENT for table `order_items`
+--
+ALTER TABLE `order_items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -124,7 +155,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

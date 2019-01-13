@@ -89,7 +89,7 @@ mysqli_close($connection);
 <div style="clear:both;"></div>
 
 <div class="message_box" style="margin:10px 0px;">
-<?php echo $status; ?>
+
 
 </body>
 </html>
