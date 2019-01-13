@@ -2,10 +2,10 @@
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3306
--- Généré le :  Dim 13 jan. 2019 à 02:15
--- Version du serveur :  5.7.24
--- Version de PHP :  7.1.25
+-- Host: localhost:3306
+-- Generation Time: Jan 13, 2019 at 10:34 AM
+-- Server version: 5.7.24
+-- PHP Version: 7.1.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -29,11 +29,23 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `basket` (
+  `id` int(50) NOT NULL,
+  `id_user` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_items`
+--
+
+CREATE TABLE `order_items` (
   `id` int(11) NOT NULL,
-  `login` text NOT NULL,
-  `price` int(11) NOT NULL,
+  `username` text NOT NULL,
+  `id_basket` int(11) NOT NULL,
+  `code` varchar(250) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `total` int(11) NOT NULL
+  `price` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -102,7 +114,13 @@ ALTER TABLE `basket`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `products`
+-- Indexes for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
@@ -121,10 +139,16 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `basket`
 --
 ALTER TABLE `basket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
--- AUTO_INCREMENT pour la table `products`
+-- AUTO_INCREMENT for table `order_items`
+--
+ALTER TABLE `order_items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
+--
+-- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
@@ -133,7 +157,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -6,36 +6,35 @@ include("header.php");
 include("nav.php");
 $status="";
 if (isset($_POST['code']) && $_POST['code']!=""){
-$code = $_POST['code'];
-$result = mysqli_query($connection,"SELECT * FROM `products` WHERE `code`='$code'");
-$row = mysqli_fetch_assoc($result);
-$name = $row['title'];
-$code = $row['code'];
-$price = $row['price'];
-$image = $row['image'];
+	$code = $_POST['code'];
+	$result = mysqli_query($connection,"SELECT * FROM `products` WHERE `code`='$code'");
+	$row = mysqli_fetch_assoc($result);
+	$name = $row['title'];
+	$code = $row['code'];
+	$price = $row['price'];
+	$image = $row['image'];
 
-$cartArray = array(
-	$code=>array(
-	'title'=>$name,
-	'code'=>$code,
-	'price'=>$price,
-	'quantity'=>1,
-	'image'=>$image)
-);
+	$cartArray = array(
+		$code=>array(
+		'title'=>$name,
+		'code'=>$code,
+		'price'=>$price,
+		'quantity'=>1,
+		'image'=>$image)
+	);
 
-if(empty($_SESSION["shopping_cart"])) {
-	$_SESSION["shopping_cart"] = $cartArray;
-	$status = "<div>Product is added to your cart!</div>";
-}else{
-	$array_keys = array_keys($_SESSION["shopping_cart"]);
-	if(in_array($code,$array_keys)) {
-		$status = "<div style='color:red;'>
-		Product is already added to your cart!</div>";
-	} else {
-	$_SESSION["shopping_cart"] = array_merge($_SESSION["shopping_cart"],$cartArray);
-	$status = "<div>Product is added to your cart!</div>";
-	}
-
+	if(empty($_SESSION["shopping_cart"])) {
+		$_SESSION["shopping_cart"] = $cartArray;
+		$status = "<div>Product is added to your cart!</div>";
+	}else{
+		$array_keys = array_keys($_SESSION["shopping_cart"]);
+		if(in_array($code,$array_keys)) {
+			$status = "<div style='color:red;'>
+			Product is already added to your cart!</div>";
+		} else {
+		$_SESSION["shopping_cart"] = array_merge($_SESSION["shopping_cart"],$cartArray);
+		$status = "<div>Product is added to your cart!</div>";
+		}
 	}
 }
 ?>
@@ -54,7 +53,18 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));
 <?php
 }
 
-$result = mysqli_query($connection,"SELECT * FROM `products`");
+if (isset($_GET['category'])){
+	$category = mysqli_real_escape_string($connection, $_GET['category']);
+	if ($category == 1)
+		$sql = "SELECT * FROM products WHERE category = 1";
+	if ($category == 2)
+		$sql = "SELECT * FROM products WHERE category = 2";
+	if ($category == 3)
+		$sql = "SELECT * FROM products WHERE category = 3";
+}
+else
+	$sql = "SELECT * FROM products";
+$result = mysqli_query($connection, $sql);
 ?>
 
 	<div class="row">
@@ -79,7 +89,7 @@ mysqli_close($connection);
 <div style="clear:both;"></div>
 
 <div class="message_box" style="margin:10px 0px;">
-<?php echo $status; ?>
+
 
 </body>
 </html>

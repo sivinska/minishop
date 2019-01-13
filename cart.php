@@ -30,7 +30,6 @@ if (isset($_POST['action']) && $_POST['action']=="change"){
 }
 
 
-
 ?>
 
 <div>
@@ -90,13 +89,37 @@ $total_price += ($product["price"]*$product["quantity"]);
 <td colspan="5" align="right">
 <strong>TOTAL: <?php echo $total_price." &#8364"; ?></strong>
 </td>
+
+<td>
+<form method='post' action=''>
+<input type='hidden' name='action' value="checkout" />
+<button type='save' class="btn btn-primary"><a href='checkout.php'>Buy items</a></button>
+</form>
+
+
+
+
+</td>
 </tr>
 
 </table>
   <?php
-}else{
+}
+
+if ($total_price != 0)
+{
+	if (isset($_SESSION['username']) && ($_SESSION['username']) != "")
+			echo "<p>You can buy theses products</p>";
+	if (empty($_SESSION['username']))
+		echo "<p>To validate this order, please log-in first !</p>";
+}
+else{
 	echo "<h3>Your cart is empty!</h3>";
 	}
+
+
+
+
 ?>
 </div>
 

@@ -2,6 +2,9 @@
 <div class="topnav">
   <div class="container">
         <a href="index.php">Home</a>
+	<a href="index.php?category=1">Hot drinks</a>
+	<a href="index.php?category=2">Cold drinks</a>
+	<a href="index.php?category=3">Dessert</a>
 
     <div class ="topnav-right">
 		<?php
