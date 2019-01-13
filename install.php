@@ -7,7 +7,7 @@ $mysql_host = 'localhost';
 // MySQL username
 $mysql_username = 'root';
 // MySQL password
-$mysql_password = "keenouxe";
+$mysql_password = 'Katinukas';
 // Database name
 $mysql_database = 'rush00';
 
@@ -39,5 +39,5 @@ foreach ($lines as $line)
 	}
 }
 echo "Tables imported successfully";
-
+header('location: index.php');
 ?>

@@ -10,8 +10,20 @@
 		<?php
 		  	if ($_SESSION["logged"] == true)
 			{
-				echo '<a href="#">'.$_SESSION["username"].'</a>';
-				echo '<a href="logout.php">Logout</a>';
+				if ($S_SESSION['type'] == 'user')
+				{
+					echo '<a href="#">'.$_SESSION["username"].'</a>';
+					echo '<a href="modify_pw.php">Modify password</a>';
+					echo '<a href="logout.php">Logout</a>';
+				}
+				if ($_SESSION['type'] == 'admin')
+				{
+					echo '<a href="admin.php">'.$_SESSION["username"].'</a>';
+					echo '<a href="modify_pw.php">Modify password</a>';
+					echo '<a href="logout.php">Logout</a>';
+
+				}
+				
 			}
 			else
 			{
