@@ -2,10 +2,10 @@
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jan 12, 2019 at 02:47 PM
--- Server version: 5.7.24
--- PHP Version: 7.1.25
+-- Hôte : localhost:3306
+-- Généré le :  Dim 13 jan. 2019 à 02:15
+-- Version du serveur :  5.7.24
+-- Version de PHP :  7.1.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `rush00`
+-- Base de données :  `rush00`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `basket`
+-- Structure de la table `basket`
 --
 
 CREATE TABLE `basket` (
@@ -39,7 +39,7 @@ CREATE TABLE `basket` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- Structure de la table `products`
 --
 
 CREATE TABLE `products` (
@@ -52,7 +52,7 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `products`
+-- Déchargement des données de la table `products`
 --
 
 INSERT INTO `products` (`id`, `title`, `price`, `image`, `category`, `code`) VALUES
@@ -72,59 +72,68 @@ INSERT INTO `products` (`id`, `title`, `price`, `image`, `category`, `code`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Structure de la table `users`
 --
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` text NOT NULL,
   `password` text NOT NULL,
-  `secret` text NOT NULL
+  `secret` text NOT NULL,
+  `type` varchar(10) NOT NULL DEFAULT 'user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Indexes for dumped tables
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `secret`, `type`) VALUES
+(1, 'klebon', '$2y$10$qAlSuaGn9gDesYFfwuS.cu3rlTgp7.IVQpus6ZOMxDZOXaNxmcTwa', '$2y$10$blsuLhc/0CtmWXNrkESPFOtpSzc7h5zhFU3DhPxgZVurmv15Vkt3y', 'admin'),
+(2, 'sarune', '$2y$10$YPV9cjUGuxkvTZv5j2dzn.ZUWiqHZWlVWzOK.9BHc16H2e0mOQW.i', '$2y$10$9VS.N8ALmdLtXSaYq32zM.FW9dpNhfAkDKiivdOGrZBUGVzM7DTj6', 'admin');
+
+--
+-- Index pour les tables déchargées
 --
 
 --
--- Indexes for table `basket`
+-- Index pour la table `basket`
 --
 ALTER TABLE `basket`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `products`
+-- Index pour la table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Index pour la table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT for table `basket`
+-- AUTO_INCREMENT pour la table `basket`
 --
 ALTER TABLE `basket`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `products`
+-- AUTO_INCREMENT pour la table `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
