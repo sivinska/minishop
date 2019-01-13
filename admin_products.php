@@ -23,9 +23,9 @@ else
 				mysqli_stmt_bind_param($stmt, "i", $param_id);
 				$param_id = test_input($_POST["id_del"]);
 				if (mysqli_stmt_execute($stmt))
-					$message = "Delete id=".test_input($_POST["id"]). "successfully.";
+					$message = "Delete id=".test_input($_POST["id_del"]). "successfully.";
 				else
-					$message = "Delete id=".test_input($_POST["id"]). "failed.";
+					$message = "Delete id=".test_input($_POST["id_del"]). "failed.";
 			}
 			header("location: admin_products.php");
 		}
@@ -36,15 +36,15 @@ else
 			$message = "Please enter an id.";
 		else
 		{
-			if (!empty($id = test_input($_POST["title_mod"])))
+			if (!empty(test_input($_POST["title_mod"])))
 				mysqli_query($connection, "UPDATE `products` SET `title` = '".$_POST["title_mod"]."' WHERE `products`.`id` = ".$id);
-			if (!empty($id = test_input($_POST["price_mod"])))
+			if (!empty(test_input($_POST["price_mod"])))
 				mysqli_query($connection, "UPDATE `products` SET `price` = '".$_POST["price_mod"]."' WHERE `products`.`id` = ".$id);
-			if (!empty($id = test_input($_POST["image_mod"])))
+			if (!empty(test_input($_POST["image_mod"])))
 				mysqli_query($connection, "UPDATE `products` SET `image` = '".$_POST["image_mod"]."' WHERE `products`.`id` = ".$id);
-			if (!empty($id = test_input($_POST["category_mod"])))
+			if (!empty(test_input($_POST["category_mod"])))
 				mysqli_query($connection, "UPDATE `products` SET `category` = '".$_POST["category_mod"]."' WHERE `products`.`id` = ".$id);
-			if (!empty($id = test_input($_POST["code_mod"])))
+			if (!empty(test_input($_POST["code_mod"])))
 				mysqli_query($connection, "UPDATE `products` SET `code` = '".$_POST["code_mod"]."' WHERE `products`.`id` = ".$id);
 		}
 	}
@@ -85,7 +85,7 @@ else
 					<td><input type="text" name="price_mod" placeholder="price" value=""></td>
 					<td><input type="url" name="image_mod" placeholder="image" value=""></td>
 					<td><input type="text" name="category_mod" placeholder="category" value=""></td>
-					<td><input type="text" name="code_mod" placeholder="code_" value=""></td>
+					<td><input type="text" name="code_mod" placeholder="code" value=""></td>
 					<td><input type="submit" name="modify" value="modify"></td>
 				</tr>
 				<tr>
