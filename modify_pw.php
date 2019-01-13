@@ -97,15 +97,15 @@ if ($_SESSION[logged] && $_SERVER["REQUEST_METHOD"] == "POST")
                 <hr>
 				<label>Old password</label>
 				<input type="password" name="oldpw" value="">
-				<span><?php echo $oldpw_err; ?></span>
+				<span style='color:red;'><?php echo $oldpw_err; ?></span>
 			
 				<label>New password</label>
 				<input type="password" name="newpw" value="">
-				<span><?php echo $newpw_err; ?></span>
+				<span style='color:red;'><?php echo $newpw_err; ?></span>
 			
 				<label>Confirm new password</label>
 				<input type="password" name="confirm_newpw" value="">
-				<span><?php echo $confirm_newpw_err; ?></span>
+				<span style='color:red;'><?php echo $confirm_newpw_err; ?></span>
 
 				<br />
 				<button type="submit" class="btn btn-primary">Modify</button>

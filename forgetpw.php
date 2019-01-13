@@ -95,28 +95,29 @@ if (!$_SESSION[logged] && $_SERVER["REQUEST_METHOD"] == "POST")
 	</head>
 	<body>
 		<form class="" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-			<div class="">
+		<div class="wrapper">
+                <h1>Reset your password</h1>
+                <p>Please fill in this form to reset your password.</p>
+                <hr>
 				<label>Username</label>
 				<input type="text" name="username" value="">
-				<span><?php echo $username_err; ?></span>
-			</div>
-			<div class="">
+				<span style='color:red;'><?php echo $username_err; ?></span>
+			
 				<label>Secret questions: What's your favourite colour?</label>
 				<input type="password" name="secret" value="">
-				<span><?php echo $secret_err; ?></span>
-			</div>
-			<div class="">
+				<span style='color:red;'><?php echo $secret_err; ?></span>
+			
 				<label>New password</label>
 				<input type="password" name="newpw" value="">
-				<span><?php echo $newpw_err; ?></span>
-			</div>
-			<div class="">
+				<span style='color:red;'><?php echo $newpw_err; ?></span>
+			
 				<label>Confirm new password</label>
 				<input type="password" name="confirm_newpw" value="">
-				<span><?php echo $confirm_newpw_err; ?></span>
-			</div>
-			<div>
-				<input type="submit" name="Reset" value="Reset">
+				<span style='color:red;'><?php echo $confirm_newpw_err; ?></span>
+
+				<br />
+				<button type="submit" class="btn btn-primary">Reset</button>
+		
 			</div>
 		</form>
 	</body>
