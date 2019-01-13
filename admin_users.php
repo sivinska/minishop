@@ -55,10 +55,10 @@ else
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Admin products</title>
+		<title>Admin users</title>
 	</head>
 	<body>
-		<h1>List of products</h1>
+		<h1>List of users</h1>
 		<form class="wrapper" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
 			<table>
 				<tr>

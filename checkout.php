@@ -11,7 +11,7 @@ if (empty($_SESSION['username']))
     echo "You need to log in fist!";
     header ('location: login.php');
 }
-else{ 
+else{
 
 $sql = "INSERT INTO basket VALUES (NULL, '". $_SESSION['username'] ."')";
 if (mysqli_query($connection, $sql)) {
@@ -28,7 +28,7 @@ foreach ($_SESSION["shopping_cart"] as $product){
     $code = $product['code'];
     $quantity = $product['quantity'];
     $price = $product['price'];
-    
+
 
     $sql = "INSERT INTO order_items VALUES (NULL, '". $user ."', $id_basket, '". $code ."', $quantity, $price )";
     $result = mysqli_query($connection, $sql);
