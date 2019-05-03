@@ -10,7 +10,7 @@
 		<?php
 		  	if ($_SESSION["logged"] == true)
 			{
-				if ($S_SESSION['type'] == 'user')
+				if ($_SESSION['type'] == 'user')
 				{
 					echo '<a href="#">'.$_SESSION["username"].'</a>';
 					echo '<a href="modify_pw.php">Modify password</a>';

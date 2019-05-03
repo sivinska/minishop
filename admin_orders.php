@@ -43,22 +43,28 @@ elseif ($_SERVER["REQUEST_METHOD"] == "POST")
 	</head>
 	<body>
 		<h1>List of orders</h1>
-		<form class="wrapper" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-			<label>Order to delete</label>
-			<input type="text" name="id_del" placeholder="id_basket" value="">
+		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+			<table class="table">
+				<tr>
+					<th>Order to delete</th></tr>
+					<tr>
+					<td><input type="text" name="id_del" placeholder="id_basket" value=""></td>
+				</tr>
+			</table>	
 			<br>
 			<button type="submit" class="btn btn-primary">Delete basket</button>
 			<span><?php echo $message; ?></span>
-
+			
 		</form>
-		<table>
+		<br /><br /><br /><br /><br /><br />
+		<table class="table">
 			<tr>
-				<td>id</td>
-				<td>username</td>
-				<td>id_basket</td>
-				<td>code</td>
-				<td>quantity</td>
-				<td>price</td>
+				<th>ID</th>
+				<th>Username</th>
+				<th>Id_basket</th>
+				<th>Code</th>
+				<th>Quantity</th>
+				<th>Price</th>
 			</tr>
 <?php
 

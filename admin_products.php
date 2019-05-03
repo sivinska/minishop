@@ -23,9 +23,9 @@ else
 				mysqli_stmt_bind_param($stmt, "i", $param_id);
 				$param_id = test_input($_POST["id_del"]);
 				if (mysqli_stmt_execute($stmt))
-					$message = "Delete id=".test_input($_POST["id_del"]). "successfully.";
+					$message = "Delete id = ".test_input($_POST["id_del"]). " successfully.";
 				else
-					$message = "Delete id=".test_input($_POST["id_del"]). "failed.";
+					$message = "Delete id = ".test_input($_POST["id_del"]). " failed.";
 			}
 			header("location: admin_products.php");
 		}
@@ -76,49 +76,51 @@ else
 	</head>
 	<body>
 		<h1>List of products</h1>
-		<form class="wrapper" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-			<table>
+		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+			<table class="table">
+				<tr></tr>
 				<tr>
-					<td>Modify</td>
+					<td><b>Modify</b></td>
 					<td><input type="text" name="id_mod" placeholder="id" value=""></td>
 					<td><input type="text" name="title_mod" placeholder="title" value=""></td>
 					<td><input type="text" name="price_mod" placeholder="price" value=""></td>
 					<td><input type="url" name="image_mod" placeholder="image" value=""></td>
 					<td><input type="text" name="category_mod" placeholder="category" value=""></td>
 					<td><input type="text" name="code_mod" placeholder="code" value=""></td>
-					<td><input type="submit" name="modify" value="modify"></td>
+					<td><button type='submit' name="modify" value="modify" class="btn btn-primary">Modify</button></td>
 				</tr>
 				<tr>
-					<td>Delete</td>
+					<td><b>Delete</b></td>
 					<td><input type="text" name="id_del" placeholder="id" value=""></td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td></td>
-					<td><input type="submit" name="delete" value="delete"></td>
+					<td><button type='submit' name="delete" value="delete" class="btn btn-primary">Delete</button></td>
 				</tr>
 				<tr>
-					<td>Add</td>
+					<td><b>Add</b></td>
 					<td></td>
 					<td><input type="text" name="title_add" placeholder="title" value=""></td>
 					<td><input type="text" name="price_add" placeholder="price" value=""></td>
 					<td><input type="url" name="image_add" placeholder="image" value=""></td>
 					<td><input type="text" name="category_add" placeholder="category" value=""></td>
 					<td><input type="text" name="code_add" placeholder="code" value=""></td>
-					<td><input type="submit" name="add" value="add"></td>
+					<td><button type='submit' name="add" value="add" class="btn btn-primary">Add</button></td>
 				</tr>
 			</table>
 			<?php echo $message; ?>
 		</form>
-		<table>
+		<br /><br /><br /><br /><br /><br />
+		<table class="table">
 			<tr>
-				<td>id</td>
-				<td>title</td>
-				<td>price</td>
-				<td>image</td>
-				<td>category</td>
-				<td>code</td>
+				<th>ID</th>
+				<th>Title</th>
+				<th>Price</th>
+				<th>Image</th>
+				<th>Category</th>
+				<th>Code</th>
 			</tr>
 <?php
 

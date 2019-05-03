@@ -7,7 +7,7 @@ $mysql_host = 'localhost';
 // MySQL username
 $mysql_username = 'root';
 // MySQL password
-$mysql_password = 'Katinukas';
+$mysql_password = '12345678';
 // Database name
 $mysql_database = 'rush00';
 

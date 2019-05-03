@@ -93,7 +93,7 @@ $total_price += ($product["price"]*$product["quantity"]);
 <td>
 <form method='post' action=''>
 <input type='hidden' name='action' value="checkout" />
-<button type='save' class="btn btn-primary"><a href='checkout.php'>Buy items</a></button>
+<button type='save' class="btn btn-primary"><a style='color:white'; href='checkout.php'>Buy items</a></button>
 </form>
 
 

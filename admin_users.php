@@ -23,9 +23,9 @@ else
 				mysqli_stmt_bind_param($stmt, "i", $param_id);
 				$param_id = test_input($_POST["id_del"]);
 				if (mysqli_stmt_execute($stmt))
-					$message = "Delete id=".test_input($_POST["id_del"]). "successfully.";
+					$message = "Deleted id = ".test_input($_POST["id_del"]). " successfully.";
 				else
-					$message = "Delete id=".test_input($_POST["id_del"]). "failed.";
+					$message = "Deleted id = ".test_input($_POST["id_del"]). " failed.";
 			}
 		}
 	}
@@ -59,33 +59,34 @@ else
 	</head>
 	<body>
 		<h1>List of users</h1>
-		<form class="wrapper" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-			<table>
+		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+			<table class="table">
 				<tr>
-					<td>Modify</td>
+					<td><b>Modify</b></td>
 					<td><input type="text" name="id_mod" placeholder="id" value=""></td>
 					<td><input type="text" name="username_mod" placeholder="username" value=""></td>
 					<td><input type="text" name="type_mod" placeholder="type" value=""></td>
-					<td><input type="submit" name="modify" value="modify"></td>
+					<td><button type='submit' name="modify" value="modify" class="btn btn-primary">Modify</button></td>
 				</tr>
 				<tr>
-					<td>Delete</td>
+					<td><b>Delete</b></td>
 					<td><input type="text" name="id_del" placeholder="id" value=""></td>
 					<td></td>
 					<td></td>
-					<td><input type="submit" name="delete" value="delete"></td>
+					<td><button type='submit' name="delete" value="delete" class="btn btn-primary">Delete</button></td>
 				</tr>
 			</table>
 			<br>
-			<label>Add user</label>
-			<input type="submit" name="adduser" value="adduser">
+			<label><b>Add user</b></label>
+			<button type="submit" name="adduser" value="adduser" class="btn btn-primary">Add</button>
 			<?php echo $message; ?>
 		</form>
-		<table>
+		<br /><br /><br /><br /><br /><br />
+		<table class="table"> 
 			<tr>
-				<td>id</td>
-				<td>username</td>
-				<td>type</td>
+				<th>Id</th>
+				<th>Username</th>
+				<th>Type</th>
 			</tr>
 <?php
 

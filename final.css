@@ -42,10 +42,10 @@ background-color: #fff;
   }
 
  @media (min-width: 768px) {
-    .col-sm-3,{
+    .col-sm-6  {
       float: left;
     }
-    .col-md-3,{
+    .col-md-3, .col-md-6  {
       position: relative;
       min-height: 1px;
       padding-left: 15px;
@@ -131,33 +131,60 @@ p{
 
 .clearfix::before,
   .clearfix:after,
+  .dl-horizontal dd:before,
+  .dl-horizontal dd:after,
   .container::before,
   .container::after,
   .container-fluid:before,
   .container-fluid:after,
   .row::before,
   .row::after,
+  .form-horizontal .form-group:before,
+  .form-horizontal .form-group:after,
+  .btn-toolbar:before,
+  .btn-toolbar:after,
+  .btn-group-vertical > .btn-group:before,
+  .btn-group-vertical > .btn-group:after,
   .nav:before,
   .nav:after,
   .navbar:before,
   .navbar:after,
-  {
+  .navbar-header:before,
+  .navbar-header:after,
+  .navbar-collapse:before,
+  .navbar-collapse:after,
+  .pager:before,
+  .pager:after,
+  .panel-body:before,
+  .panel-body:after,
+  .modal-header:before,
+  .modal-header:after,
+  .modal-footer:before,
+  .modal-footer:after {
     content: " ";
     display: table;
   }
   .clearfix::after,
+  .dl-horizontal dd:after,
   .container::after,
   .container-fluid:after,
   .row::after,
   .form-horizontal .form-group:after,
+  .btn-toolbar:after,
+  .btn-group-vertical > .btn-group:after,
   .nav:after,
   .navbar:after,
-   {
+  .navbar-header:after,
+  .navbar-collapse:after,
+  .pager:after,
+  .panel-body:after,
+  .modal-header:after,
+  .modal-footer:after {
     clear: both;
   }
 
 a{
-  text-decoration: unset;
+  text-decoration: none;
 }
 
 .topnav {
@@ -192,9 +219,10 @@ a{
 td, th {
   border: 1px solid #ddd;
   padding: 8px;
+  text-align: center;
 }
 
-.table tr:nth-child(even){background-color: #f2f2f2;}
+.table tr:nth-child(even){background-color: rgb(197, 194, 194);}
 
 .table tr:hover {background-color: #ddd;}
 
@@ -217,7 +245,7 @@ form { margin: 0 auto; }
 }
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
+input {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -226,7 +254,7 @@ input[type=text], input[type=password] {
   background: #f1f1f1;
 }
 
-input[type=text]:focus, input[type=password]:focus {
+input:focus {
   background-color: #ddd;
   outline: none;
 }
@@ -236,3 +264,4 @@ hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
 }
+
