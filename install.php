@@ -3,13 +3,13 @@
 // Name of the file
 $filename = 'rush00.sql';
 // MySQL host
-$mysql_host = 'localhost';
+$mysql_host = 'gi6kn64hu98hy0b6.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306';
 // MySQL username
-$mysql_username = 'root';
+$mysql_username = 'd5pemg5m2sv3lkuy';
 // MySQL password
-$mysql_password = '12345678';
+$mysql_password = 'gblaszkquv2fxruw';
 // Database name
-$mysql_database = 'rush00';
+$mysql_database = 'otpz4163njjx6yae';
 
 // Connect to MySQL server
 $connection = mysqli_connect($mysql_host, $mysql_username, $mysql_password) or die('Error connecting to MySQL server: ' . mysql_error());
